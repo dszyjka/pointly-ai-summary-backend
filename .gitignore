@@ -1,0 +1,10 @@
+# Bytecode / cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IDE configs
+.vscode/
+
+# Environment
+.env
