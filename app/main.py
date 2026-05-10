@@ -2,14 +2,13 @@ from fastapi import FastAPI, File, UploadFile, Form
 from google import genai
 from files_reading import extract_text
 from typing import Annotated
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
     gemini_api_key: str
     
-    class Config:
-        env_file = ".env"
+    model_config = SettingsConfigDict(env_file=".env")
 
 settings = Settings()
 
@@ -26,10 +25,7 @@ async def summarize(
 
     text = await extract_text(file)
 
-    response_rules = ''
-
-    for rule in user_rules:
-        response_rules += f'{rule}\n'
+    response_rules = '\n'.join(user_rules)
 
     response = await client.aio.models.generate_content(
         model=model,
