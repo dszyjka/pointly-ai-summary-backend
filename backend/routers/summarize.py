@@ -7,11 +7,10 @@ from constants.labels import ResponseType
 from services import summarize
 from sqlalchemy.ext.asyncio import AsyncSession
 from google import genai
-from config import Settings
+from config import settings
 
 
 router = APIRouter()
-settings = Settings()
 
 
 @router.post('/summarize') # multipart/form-data

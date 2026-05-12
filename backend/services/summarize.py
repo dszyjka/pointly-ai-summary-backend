@@ -1,11 +1,10 @@
 from services.files_reading import extract_text
 from google import genai
-from config import Settings
+from config import settings
 from database.models import SummaryRecord
 from database.database import save_to_db
 
 
-settings = Settings()
 client = genai.Client(api_key=settings.gemini_api_key)
 
 async def run(file, user_id, response_type, user_rules, db):

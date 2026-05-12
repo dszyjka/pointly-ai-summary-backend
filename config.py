@@ -5,3 +5,6 @@ class Settings(BaseSettings):
     gemini_api_key: str
     database_url: str
     model_config = SettingsConfigDict(env_file=".env")
+
+
+settings = Settings()

@@ -1,10 +1,13 @@
 from sqlmodel import SQLModel
-from config import Settings
+from config import settings
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
 
 
-settings = Settings()
-engine = create_async_engine(settings.database_url, echo=True)
+engine = create_async_engine(
+    settings.database_url,
+    echo=True,
+    connect_args={'check_same_thread' : False} if 'sqlite' in settings.database_url else {})
+
 async_session = async_sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
  
 async def init_db():
