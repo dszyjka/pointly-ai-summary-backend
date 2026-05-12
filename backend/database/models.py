@@ -1,11 +1,11 @@
 from sqlmodel import SQLModel, Field
-from datetime import datetime
+from datetime import datetime, timezone
+from constants.labels import ResponseType
 
 
 class SummaryRecord(SQLModel, table=True):
-    id: int = Field(primary_key=True)
-    user_id: str
+    id: int | None = Field(default=None, primary_key=True)
+    user_id: str = Field(index=True)
     filename: str
-    response_type: str
     summary: str
-    created_at: datetime = Field(default_factory=datetime.now)
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))

@@ -1,13 +1,15 @@
 from services.files_reading import extract_text
 from google import genai
 from config import Settings
+from database.models import SummaryRecord
+from database.database import save_to_db
 
 
 settings = Settings()
 client = genai.Client(api_key=settings.gemini_api_key)
 
 async def run(file, user_id, response_type, user_rules, db):
-    model = 'gemini-2.5-flash'
+    model = 'gemini-2.0-flash'
 
     text = await extract_text(file)
 
@@ -36,6 +38,12 @@ async def run(file, user_id, response_type, user_rules, db):
 
         full_summary = ''.join(summary_chunks)
 
-        # save_to_db()
+        new_record = SummaryRecord(
+            user_id=user_id,
+            filename=file.filename,
+            summary=full_summary
+        )
+
+        await save_to_db(db, new_record)
 
     return generate_summary()
