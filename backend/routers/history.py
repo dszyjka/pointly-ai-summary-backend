@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends
-from database.database import get_db
-from services import history
+from backend.database.database import get_db
+from backend.services import history
 from sqlalchemy.ext.asyncio import AsyncSession
 
 

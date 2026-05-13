@@ -1,8 +1,8 @@
-from services.files_reading import extract_text
+from backend.services.files_reading import extract_text
 from google import genai
 from config import settings
-from database.models import SummaryRecord
-from database.database import save_to_db
+from backend.database.models import SummaryRecord
+from backend.database.database import save_to_db
 
 
 client = genai.Client(api_key=settings.gemini_api_key)

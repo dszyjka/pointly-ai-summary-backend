@@ -1,6 +1,5 @@
 from sqlmodel import SQLModel, Field
 from datetime import datetime, timezone
-from constants.labels import ResponseType
 
 
 class SummaryRecord(SQLModel, table=True):

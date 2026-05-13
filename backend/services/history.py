@@ -1,4 +1,4 @@
-from database.models import SummaryRecord
+from backend.database.models import SummaryRecord
 from sqlmodel import select
 from sqlalchemy.ext.asyncio import AsyncSession
 

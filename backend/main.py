@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from config import settings
-from database.database import init_db
-from routers import summarize, history
+from .database.database import init_db
+from .routers import summarize, history
 from contextlib import asynccontextmanager
 
 

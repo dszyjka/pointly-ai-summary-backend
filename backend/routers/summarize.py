@@ -2,9 +2,9 @@ from fastapi import File, UploadFile, Form, Depends, Header, HTTPException
 from fastapi.responses import StreamingResponse
 from fastapi import APIRouter
 from typing import Annotated
-from database.database import get_db
-from constants.labels import ResponseType
-from services import summarize
+from backend.database.database import get_db
+from backend.constants.labels import ResponseType
+from backend.services import summarize
 from sqlalchemy.ext.asyncio import AsyncSession
 
 
