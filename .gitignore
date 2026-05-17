@@ -2,9 +2,21 @@
 __pycache__/
 *.py[cod]
 *$py.class
+venv/
+.venv/
 
 # IDE configs
 .vscode/
+.idea/
+*.iml
 
 # Environment
 .env
+
+# Mobile / Android
+.gradle/
+local.properties
+/build
+/captures
+.externalNativeBuild/
+.cxx/
