@@ -17,8 +17,8 @@ app.include_router(history.router, prefix='/api', tags=['history'])
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # Allows all origins (fine for development)
+    allow_origins=["*"],
     allow_credentials=True,
-    allow_methods=["*"], # Allows all methods (GET, POST, etc.)
-    allow_headers=["*"], # Allows all headers (including your x-user-id)
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
