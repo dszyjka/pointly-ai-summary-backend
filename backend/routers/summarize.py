@@ -10,7 +10,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 router = APIRouter()
 
-async def get_user_from_header(x_user_id: str = Header(None)):
+def get_user_from_header(x_user_id: str = Header(None)):
     if x_user_id is None:
         raise HTTPException(400, detail='Missing X-USER-ID header')
     return x_user_id
@@ -19,7 +19,7 @@ async def get_user_from_header(x_user_id: str = Header(None)):
 async def post_summarize(
                 file: Annotated[UploadFile, File()],
                 response_type: Annotated[ResponseType, Form()],
-                user_rules: Annotated[list[str], Form()],
+                user_rules: Annotated[str, Form()],
                 user_id: str = Depends(get_user_from_header),
                 db: AsyncSession = Depends(get_db),
                     ):
