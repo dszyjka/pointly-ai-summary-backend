@@ -15,7 +15,7 @@ def get_user_from_header(x_user_id: str = Header(None)):
         raise HTTPException(400, detail='Missing X-USER-ID header')
     return x_user_id
 
-@router.post('/summarize') # multipart/form-data
+@router.post('/summarize')
 async def post_summarize(
                 file: Annotated[UploadFile, File()],
                 response_type: Annotated[ResponseType, Form()],
