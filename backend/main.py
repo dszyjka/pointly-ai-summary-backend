@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from config import settings
 from .database.database import init_db
-from .routers import summarize, history
+from .routers import summarize, history, file_search
 from contextlib import asynccontextmanager
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -14,6 +14,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(lifespan=lifespan)
 app.include_router(summarize.router, prefix='/api', tags=['summarization'])
 app.include_router(history.router, prefix='/api', tags=['history'])
+app.include_router(file_search.router, prefix='/api', tags=['search'])
 
 app.add_middleware(
     CORSMiddleware,
