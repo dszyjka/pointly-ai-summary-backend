@@ -15,7 +15,7 @@ def sanitize_input(user_input: str):
     return user_input.replace('<', '&lt;').replace('>', '&gt;')
 
 async def run(file: UploadFile, user_id: str, response_type: ResponseType, user_rules: str, db: AsyncSession):
-    model = 'gemini-2.5-flash'
+    model = 'gemini-3.5-flash'
 
     text = await extract_text(file)
 
