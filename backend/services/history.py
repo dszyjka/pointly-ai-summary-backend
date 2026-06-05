@@ -4,6 +4,6 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 
 async def run(user_id: str, db: AsyncSession):
-    results = await db.execute(select(SummaryRecord).where(SummaryRecord.user_id == user_id))
+    results = await db.execute(select(SummaryRecord).where(SummaryRecord.user_id == user_id).order_by(SummaryRecord.created_at.desc()))
     records = results.scalars().all()
     return records

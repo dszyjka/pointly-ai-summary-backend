@@ -3,6 +3,11 @@ from enum import Enum
 
 class ResponseType(str, Enum):
     bullet_points = 'Bullet Points'
-    standard = 'Standard'
+    paragraph = 'Paragraph'
     tldr = 'TL;DR'
-    # more types will be add later
+    qa = 'Q&A'
+    executive = 'Executive Summary'
+    key_metrics = 'Key Metrics'
+    action_items = 'Action Items'
+    explanation = 'Explanation'
+    business = 'Business Report'
