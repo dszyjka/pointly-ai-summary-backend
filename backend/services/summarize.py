@@ -52,7 +52,8 @@ async def run(file: UploadFile, user_id: str, response_type: ResponseType, user_
 
         new_record = SummaryRecord(
             user_id=user_id,
-            filename=file.filename,
+            file_name=file.filename,
+            base_name=file.filename.rpartition('.')[0],
             summary=full_summary
         )
 
