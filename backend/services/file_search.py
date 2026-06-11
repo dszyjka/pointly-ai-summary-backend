@@ -8,7 +8,7 @@ async def run(user_id: str, searched_file: str, db: AsyncSession):
         select(SummaryRecord).where(
             SummaryRecord.user_id == user_id,
             SummaryRecord.base_name.ilike(f'%{searched_file}%')
-            )
+            ).order_by(SummaryRecord.created_at.desc())
         )
     
     records = results.scalars().all()
